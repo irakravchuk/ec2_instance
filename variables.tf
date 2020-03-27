@@ -1,6 +1,5 @@
 variable "region" {
   description = "Region"
-  region = "us-east-1"
 }
 
 variable "instance_type" {
