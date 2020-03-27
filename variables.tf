@@ -4,6 +4,7 @@
 
 variable "instance_type" {
   description = "Instance Type"
+  default = "f1-micro"
 }
 
 variable "instance_count" {
@@ -30,4 +31,5 @@ description = "VPC"
 
 variable "ami" {
   description = "AMI"
+  default = "1"
 }
