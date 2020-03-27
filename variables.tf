@@ -13,7 +13,8 @@ variable "instance_count" {
 }
 
 variable "subnet" {
-description = "Subnet ID"
+  description = "Subnet ID"
+  default = "1"
 }
 
 variable "sg" {
@@ -23,10 +24,12 @@ variable "sg" {
 
 variable "key" {
   description = "AWS Key"
+  default = "1"
 }
 
 variable "vpc_id" {
-description = "VPC"
+  description = "VPC"
+  default = "1"
 }
 
 variable "ami" {
