@@ -262,13 +262,19 @@ provider "aws" {
   alias  = "demo"
   #region = var.demo_region
 }
+provider "aws" {
+  alias  = "demo-cluster"
+}
+provider "aws" {
+  alias  = "demo-cluster-AmazonEKSClusterPolicy"
+}
 
 provider "aws" {
   alias  = "secondary"
   region = var.secondary_region
 
-  access_key = var.scalr_aws_access_key
-  secret_key = var.scalr_aws_secret_key
+  #access_key = var.scalr_aws_access_key
+  #secret_key = var.scalr_aws_secret_key
 }
 
 resource "aws_rds_global_cluster" "example" {
