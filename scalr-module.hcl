@@ -31,12 +31,12 @@ variable "instance_type" {
   }
 }
 
-variable "sg" {
-  policy = "cloud.security_groups"
-  conditions = {
-    cloud = "ec2"
-  }
-}
+#variable "sg" {
+ # policy = "cloud.security_groups"
+  #conditions = {
+   # cloud = "ec2"
+  #}
+#}
 
 variable "key" {
   global_variable = "ssh_key"
