@@ -17,10 +17,10 @@ variable "subnet" {
   default = "1"
 }
 
-variable "sg" {
-  description = "AWS Secruity Group"
-  type        = list(string)
-}
+#variable "sg" {
+ # description = "AWS Secruity Group"
+  #type        = list(string)
+#}
 
 variable "key" {
   description = "AWS Key"
