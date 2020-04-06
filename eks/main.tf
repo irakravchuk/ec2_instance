@@ -137,9 +137,9 @@ resource "aws_security_group_rule" "demo-node-ingress-cluster" {
     #values = ["amazon-eks-node-${aws_eks_cluster.demo.version}-v*"]
    #values = ["amazon-eks-node"]
   #}
-  most_recent = true
-  owners      = ["602401143452"] # Amazon EKS AMI Account ID
-}
+ # most_recent = true
+ # owners      = ["602401143452"] # Amazon EKS AMI Account ID
+#}
 
 resource "aws_launch_configuration" "test_launch_configuration" {
   associate_public_ip_address = true
