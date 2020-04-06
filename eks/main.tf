@@ -131,15 +131,15 @@ resource "aws_security_group_rule" "demo-node-ingress-cluster" {
   type                     = "ingress"
 }
 
-#data "aws_ami" "eks-worker" {
-  #filter {
-    #name   = "name777"
-    #values = ["amazon-eks-node-${aws_eks_cluster.demo.version}-v*"]
+data "aws_ami" "eks-worker" {
+  filter {
+    name   = "name777"
+    values = ["amazon-eks-node-${aws_eks_cluster.demo.version}-v*"]
    #values = ["amazon-eks-node"]
-  #}
- # most_recent = true
- # owners      = ["602401143452"] # Amazon EKS AMI Account ID
-#}
+  }
+  most_recent = true
+  owners      = ["602401143452"] # Amazon EKS AMI Account ID
+}
 
 resource "aws_launch_configuration" "test_launch_configuration" {
   associate_public_ip_address = true
@@ -310,18 +310,18 @@ resource "aws_rds_cluster_instance" "primary" {
 
 
 
-#resource "aws_eks_cluster" "demo" {
- # name     = var.cluster-name
-  #role_arn = aws_iam_role.demo-cluster.arn
-  #vpc_config {
-   # security_group_ids = [aws_security_group.demo-cluster.id]
-    #subnet_ids         = aws_subnet.demo[*].id
-  #}
- # depends_on = [
-  #  "aws_iam_role_policy_attachment.demo-cluster-AmazonEKSClusterPolicy",
-   # "aws_iam_role_policy_attachment.demo-cluster-AmazonEKSServicePolicy",
-  #]
-#}
+resource "aws_eks_cluster" "demo" {
+  name     = var.cluster-name
+  role_arn = aws_iam_role.demo-cluster.arn
+  vpc_config {
+    security_group_ids = [aws_security_group.demo-cluster.id]
+    subnet_ids         = aws_subnet.demo[*].id
+  }
+  depends_on = [
+    "aws_iam_role_policy_attachment.demo-cluster-AmazonEKSClusterPolicy",
+    "aws_iam_role_policy_attachment.demo-cluster-AmazonEKSServicePolicy",
+  ]
+}
 
 
 
