@@ -135,6 +135,7 @@ data "aws_ami" "eks-worker" {
   filter {
     name   = "name777"
     #values = ["amazon-eks-node-${aws_eks_cluster.demo.version}-v*"]
+   values = ["amazon-eks-node"]
   }
   most_recent = true
   owners      = ["602401143452"] # Amazon EKS AMI Account ID
