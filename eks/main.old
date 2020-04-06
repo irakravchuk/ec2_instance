@@ -1,0 +1,31 @@
+provider "aws" {
+  region     = var.region
+  access_key = "${var.scalr_aws_access_key}"
+  secret_key = "${var.scalr_aws_secret_key}"
+}
+
+resource "aws_eks_cluster" "example" {
+  name     = "kkotov"
+  role_arn = "arn:aws:iam::615271354814:role/eksServiceRole"
+  version = "1.13"
+
+  vpc_config {
+    subnet_ids = ["subnet-b347fefb", "subnet-7e3fd71a", "subnet-41b49e24"]
+  }
+}
+
+resource "aws_security_group" "all-open" {
+  #count       = var.enabled && var.use_existing_security_group == false ? 1 : 0
+  #name        = module.label.id
+  description = "Security Group for EKS worker nodes"
+  vpc_id      = "vpc-596aa03e"
+  #tags        = module.label.tags
+}
+
+output "endpoint" {
+  value = "${aws_eks_cluster.example.endpoint}"
+}
+
+output "kubeconfig-certificate-authority-data" {
+  value = "${aws_eks_cluster.example.certificate_authority.0.data}"
+}
