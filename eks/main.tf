@@ -256,7 +256,11 @@ resource "aws_autoscaling_group" "mixed_instances_policy" {
 provider "aws" {
   alias  = "primary"
   region = var.primary_region
+}
 
+provider "aws" {
+  alias  = "demo"
+  #region = var.demo_region
 }
 
 provider "aws" {
