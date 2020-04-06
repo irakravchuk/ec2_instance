@@ -259,13 +259,13 @@ provider "aws" {
 
 }
 
-#provider "aws" {
- # alias  = "secondary"
-  #region = var.secondary_region
+provider "aws" {
+  alias  = "secondary"
+  region = var.secondary_region
 
-#  access_key = var.scalr_aws_access_key
-#  secret_key = var.scalr_aws_secret_key
-#}
+  access_key = var.scalr_aws_access_key
+  secret_key = var.scalr_aws_secret_key
+}
 
 resource "aws_rds_global_cluster" "example" {
  provider = "aws.primary"
@@ -292,21 +292,21 @@ resource "aws_rds_cluster_instance" "primary" {
 
 ############################################################################################
 
-#resource "aws_rds_cluster" "secondary" {
- # depends_on = ["aws_rds_cluster_instance.primary"]
-#  provider   = "aws.secondary"
+resource "aws_rds_cluster" "secondary" {
+  depends_on = ["aws_rds_cluster_instance.primary"]
+  provider   = "aws.secondary"
 
- # engine_mode               = "serverless"
- # global_cluster_identifier = aws_rds_global_cluster.example.id
-#}
+  engine_mode               = "serverless"
+  global_cluster_identifier = aws_rds_global_cluster.example.id
+}
 
-#resource "aws_rds_cluster_instance" "secondary" {
- #provider = "aws.secondary"
+resource "aws_rds_cluster_instance" "secondary" {
+ provider = "aws.secondary"
 
-  #cluster_identifier = aws_rds_cluster.secondary.id
-  #instance_class = var.aurora_instance_class
-  #engine = "aurora"
-#}
+  cluster_identifier = aws_rds_cluster.secondary.id
+  instance_class = var.aurora_instance_class
+  engine = "aurora"
+}
 
 
 
