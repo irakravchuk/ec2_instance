@@ -28,6 +28,6 @@ variable "vpc_id" {
 description = "VPC"
 }
 
-variable "ami" {
-  description = "ami"
-}
+#variable "ami" {
+ # description = "ami"
+#}
